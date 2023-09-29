@@ -1,6 +1,5 @@
 import { inputObjectType, objectType, interfaceType } from 'nexus'
 import { DateTime } from '../scalars'
-import Cart  from '../model'
 import { PaginatorObjectType } from '../common/types'
 
 
@@ -16,7 +15,7 @@ export const OrderGeneralNode = interfaceType({
 })
 
 export const OrderItemGeneralNode = interfaceType({
-  name: 'OrderGeneral',
+  name: 'OrderItemGeneral',
   definition(t) {
     t.nonNull.id('_id')
     t.nullable.string('productId')
@@ -39,5 +38,23 @@ export const OrderItemObjectType = objectType({
   name: 'OrderItem',
   definition(t) {
     t.implements(OrderItemGeneralNode)
+  },
+})
+
+export const InvoiceGeneralNode = interfaceType({
+  name: 'InvoiceGeneral',
+  definition(t) {
+    t.nonNull.id('_id')
+    t.nullable.string('userId')
+    t.nullable.list.field('orderId', {type: "Order"})
+    t.nullable.field('createdAt', { type: 'DateTime' })
+    t.nullable.field('updatedAt', { type: 'DateTime' })
+  },
+})
+
+export const InvoiceObjectType = objectType({
+  name: 'Invoice',
+  definition(t) {
+    t.implements(InvoiceGeneralNode)
   },
 })

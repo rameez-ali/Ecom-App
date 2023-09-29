@@ -19,8 +19,6 @@ export const UserRegistrationInputType = inputObjectType({
     t.nonNull.string('password')
     t.nonNull.string('confirmPassword')
     t.nonNull.boolean('termsAndCondition')
-    t.nonNull.string('stripe_customer_id')
-    t.nonNull.string('stripe_card_id')
     t.nonNull.field('role', { type: 'ROLE' })
   },
 })

@@ -84,9 +84,7 @@ export const addStripeCard = async (
 
 export const stripeCharge = async (
   ctx: IContextType,
-  payload: NexusGenInputs['StripeChargeAdditionInput']
-): Promise<NexusGenObjects['User']> => {
-  const { tamount } = payload
+)=> {
 
   const userId = ctx.user._id;
 

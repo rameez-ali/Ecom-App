@@ -1,6 +1,7 @@
 import { GraphQLError } from 'graphql'
 import {Order} from './model'
 import {OrderItem} from './model'
+import {Invoice} from './model'
 import Cart from '../item/model'
 import { NexusGenInputs, NexusGenObjects } from 'nexus-typegen'
 import { IContextType } from '../../types'
@@ -59,14 +60,26 @@ catch (err) {
 }
 
 
-export const GetOrderByIdInputType = async (
+export const getInvoices = async (
   ctx: IContextType,
-  payload: NexusGenInputs['GetOrderByIdInput']
-): Promise<NexusGenObjects['User']> => {
-  
-  const order = await Order.find();
+) => {
+  const userId = ctx.user._id;
+  console.log(userId)
 
-  return order;
+  const invoices = await Invoice.find({userId:userId}).populate("orderId");
+
+  console.log(invoices)
+
+  //return invoices
+  
+  return {
+    data:invoices
+  }
+
+  
+  
+
+  //return invoices
 
 }
 

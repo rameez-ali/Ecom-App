@@ -42,14 +42,14 @@ export const StripeMutation = extendType({
     t.nullable.field('charge', {
       type: CustomerObjectType,
       args: {
-        data: StripeChargeAdditionInputType,
+        
       },
 
       resolve(_, args, ctx) {
         // @ts-ignore
         const { data } = args
 
-        return stripeCharge(ctx, data as NexusGenInputs['StripeChargeAdditionInput'])
+        return stripeCharge(ctx)
       },
     })
 
