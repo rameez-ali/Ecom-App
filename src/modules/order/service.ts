@@ -66,15 +66,16 @@ export const getInvoices = async (
   const userId = ctx.user._id;
   console.log(userId)
 
-  const invoices = await Invoice.find({userId:userId}).populate("orderId");
+  const invoices = await Invoice.findOne({_id:'6516c5d005d82e3f4aae5fe2'});
 
   console.log(invoices)
 
-  //return invoices
+  // return {
+  //   data:invoices
+  // }
+
+  return invoices
   
-  return {
-    data:invoices
-  }
 
   
   

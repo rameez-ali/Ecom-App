@@ -8,7 +8,7 @@ export const OrderGeneralNode = interfaceType({
   definition(t) {
     t.nonNull.id('_id')
     t.nullable.string('userId')
-    t.nonNull.int('date')
+    t.nullable.string('date')
     t.nullable.field('createdAt', { type: 'DateTime' })
     t.nullable.field('updatedAt', { type: 'DateTime' })
   },
@@ -46,7 +46,7 @@ export const InvoiceGeneralNode = interfaceType({
   definition(t) {
     t.nonNull.id('_id')
     t.nullable.string('userId')
-    t.nullable.list.field('orderId', {type: "Order"})
+    t.nullable.field('orderId', {type: "Order"})
     t.nullable.field('createdAt', { type: 'DateTime' })
     t.nullable.field('updatedAt', { type: 'DateTime' })
   },
