@@ -19,6 +19,8 @@ export const UserRegistrationInputType = inputObjectType({
     t.nonNull.string('password')
     t.nonNull.string('confirmPassword')
     t.nonNull.boolean('termsAndCondition')
+    t.nonNull.string('stripe_customer_id')
+    t.nonNull.string('stripe_card_id')
     t.nonNull.field('role', { type: 'ROLE' })
   },
 })
@@ -105,6 +107,7 @@ export const AddNewUserInputType = inputObjectType({
     t.nonNull.string('zipCode')
     t.nonNull.string('phone')
     t.nonNull.string('bio')
+    t.nonNull.string('stripe_customer_id')
     t.nonNull.field('role', { type: 'ROLE' })
   },
 })

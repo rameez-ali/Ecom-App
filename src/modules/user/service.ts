@@ -140,6 +140,8 @@ export const registerUser = async (
     lastName,
     active: false,
     password: hashedPassword,
+    stripe_customer_id: "",
+    stripe_card_id: "",
   })
 
   return createdUser

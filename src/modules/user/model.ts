@@ -21,6 +21,8 @@ export interface IUser {
   password: string
   active: boolean
   otp?: IOtp
+  stripe_customer_id : String
+  stripe_card_id : String
 }
 
 export interface IUserDocument extends IUser, Document {}
@@ -60,6 +62,8 @@ const UserSchema = new mongoose.Schema<IUserDocument, IUserModel>(
     bio: { type: String },
     password: { type: String },
     active: { type: Boolean },
+    stripe_customer_id : {type:String},
+    stripe_card_id : {type:String},
     otp: OtpSchema,
   },
   { timestamps: true }

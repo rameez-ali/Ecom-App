@@ -6,8 +6,10 @@ import Users from './modules/user'
 import Options from './modules/options'
 import Common from './modules/common'
 import Chat from './modules/chat'
-import Todo from './modules/todo'
-import Task from './modules/task'
+import Cart from './modules/item'
+import Product from './modules/product'
+import Stripe from './modules/stripe'
+import Order from './modules/order'
 
 export const schema = makeSchema({
   features: {
@@ -15,7 +17,7 @@ export const schema = makeSchema({
       resolveType: false,
     },
   },
-  types: [Enums, Scalars, Users, Options, Common, Chat, Todo, Task],
+  types: [Enums, Scalars, Users, Options, Common, Chat, Cart, Product, Stripe, Order],
   outputs: {
     typegen: join(__dirname, '..', 'nexus-typegen.ts'), // 2
     schema: join(__dirname, '..', 'schema.graphql'), // 3

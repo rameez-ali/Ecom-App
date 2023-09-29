@@ -18,6 +18,8 @@ export const UserGeneralNode = interfaceType({
     t.nullable.string('zipCode')
     t.nullable.string('address')
     t.nullable.string('avatar')
+    t.nullable.string('stripe_customer_id')
+    t.nullable.string('stripe_card_id')
     t.nullable.string('bio')
     t.nullable.field('createdAt', { type: 'DateTime' })
     t.nullable.field('updatedAt', { type: 'DateTime' })

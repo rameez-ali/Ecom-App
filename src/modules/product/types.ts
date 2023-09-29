@@ -2,8 +2,8 @@ import { inputObjectType, objectType, interfaceType } from 'nexus'
 import { DateTime } from '../scalars'
 import { PaginatorObjectType } from '../common/types'
 
-export const TaskGeneralNode = interfaceType({
-  name: 'TaskGeneral',
+export const ProductGeneralNode = interfaceType({
+  name: 'ProductGeneral',
   definition(t) {
     t.nonNull.id('_id')
     t.nullable.string('name')
@@ -12,24 +12,24 @@ export const TaskGeneralNode = interfaceType({
   },
 })
 
-export const TaskObjectType = objectType({
-  name: 'Task',
+export const ProductObjectType = objectType({
+  name: 'Product',
   definition(t) {
-    t.implements(TaskGeneralNode)
+    t.implements(ProductGeneralNode)
   },
 })
 
-export const TaskPaginator = objectType({
-  name: 'TaskPaginator',
+export const ProductPaginator = objectType({
+  name: 'ProductPaginator',
   definition(t) {
-    t.nullable.list.nullable.field('data', { type: TaskObjectType })
+    t.nullable.list.nullable.field('data', { type: ProductObjectType })
     t.nullable.field('paginatorInfo', { type: PaginatorObjectType })
   },
 })
 
-export const TaskList = objectType({
-  name: 'Tasks',
+export const ProductList = objectType({
+  name: 'Products',
   definition(t) {
-    t.nullable.list.nullable.field('data', { type: TaskObjectType })
+    t.nullable.list.nullable.field('data', { type: ProductObjectType })
   },
 })
