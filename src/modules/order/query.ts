@@ -9,10 +9,9 @@ import { NexusGenInputs } from 'nexus-typegen'
 export const InvoiceQuery = extendType({
   type: 'Query',
   definition(t) {
-    t.field('getInvoices', {
+    t.list.field('getInvoices', {
       type: InvoiceObjectType,
-      args:{
-      },
+      args: {},
       async resolve(_, args, ctx) {
         const data = await getInvoices(ctx)
         return data

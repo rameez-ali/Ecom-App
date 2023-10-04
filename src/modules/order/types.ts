@@ -1,7 +1,8 @@
 import { inputObjectType, objectType, interfaceType } from 'nexus'
 import { DateTime } from '../scalars'
 import { PaginatorObjectType } from '../common/types'
-
+import { array } from 'zod'
+import { isArrayLikeObject } from 'lodash'
 
 export const OrderGeneralNode = interfaceType({
   name: 'OrderGeneral',
@@ -45,8 +46,8 @@ export const InvoiceGeneralNode = interfaceType({
   name: 'InvoiceGeneral',
   definition(t) {
     t.nonNull.id('_id')
-    t.nullable.string('userId')
-    t.nullable.field('orderId', {type: "Order"})
+    t.nullable.field('orderId', { type: 'Order' })
+    t.nullable.field('orderId', { type: OrderItemObjectType })
     t.nullable.field('createdAt', { type: 'DateTime' })
     t.nullable.field('updatedAt', { type: 'DateTime' })
   },

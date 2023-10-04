@@ -8,10 +8,7 @@ import { signJwt } from '../../utils/jwt.utils'
 import { IContextType } from '../../types'
 import { FilterQuery } from 'mongoose'
 
-export const getProducts = async (
-  ctx: IContextType,
-  paginator: NexusGenInputs['PaginatorFilterInput']
-): Promise<NexusGenObjects['ProductPaginator']> => {
+export const getProducts = async (ctx: IContextType) => {
   const products = await Product.find()
 
   if (!products) {
@@ -55,28 +52,25 @@ export const deleteProductById = async (
       throw new GraphQLError('Not Authorize')
     }
 
-    const products = await Product.findByIdAndDelete({_id:payload.taskId})
+    const products = await Product.findByIdAndDelete({ _id: payload.taskId })
 
     if (!products) {
       throw new GraphQLError("Task doesn't exist")
     }
 
     // Detaching this Task from Todo
-    const product = await Todo.findOne({tasks:payload.taskId})
-    if(product){
+    const product = await Todo.findOne({ tasks: payload.taskId })
+    if (product) {
       await Todo.findByIdAndUpdate(product._id, {
         $pull: { tasks: payload.taskId },
-      });
+      })
     }
 
-
-    return products;
-
+    return products
   }
 
   throw new GraphQLError('Not Authorize')
 }
-
 
 export const updateProductById = async ({
   ctx,
