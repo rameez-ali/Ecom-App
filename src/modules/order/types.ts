@@ -47,7 +47,7 @@ export const InvoiceGeneralNode = interfaceType({
   definition(t) {
     t.nonNull.id('_id')
     t.nullable.field('orderId', { type: 'Order' })
-    t.nullable.field('orderId', { type: OrderItemObjectType })
+    t.nullable.field('orderIds', { type: OrderItemObjectType })
     t.nullable.field('createdAt', { type: 'DateTime' })
     t.nullable.field('updatedAt', { type: 'DateTime' })
   },

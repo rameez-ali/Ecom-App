@@ -107,10 +107,11 @@ export const getInvoices = async (ctx: IContextType) => {
   // return {
   //   data: invoices[0],
   // }
+
   return invoices.map((invoice) => ({
     ...invoice,
     orderId: invoice.order[0],
-    orderitems: invoice.orderitems[0],
+    orderIds: invoice.orderitems[0],
   }))
 
   //return invoices
